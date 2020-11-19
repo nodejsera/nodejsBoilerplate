@@ -5,8 +5,7 @@ const { format } = require('sql-formatter');
 const { Op } = require('sequelize');
 
 const env = process.env.NODE_ENV || 'development';
-const DOCKER_TEST_DATABASE_URL =
-  'postgres://postgres:ucreate@localhost:5436/nodejs_boilerplate_test';
+// const DOCKER_TEST_DATABASE_URL =  'postgres://postgres:ucreate@localhost:5436/nodejs_boilerplate_test';
 
 const operatorsAliases = Op; // https://github.com/sequelize/sequelize/issues/8417#issuecomment-355123149
 const dialect = 'postgres';
