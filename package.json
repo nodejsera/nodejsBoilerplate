@@ -1,0 +1,77 @@
+{
+  "name": "nodejs-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "cross-env-shell NODE_ENV=test \"sequelize db:migrate:undo:all && sequelize db:migrate && npm run spec\"",
+    "test:debug": "cross-env-shell NODE_ENV=test \"sequelize db:migrate:undo:all && sequelize db:migrate && npm run spec -- --inspect\"",
+    "test:sync": "cross-env NODE_ENV=test SYNC_DATABASE=1 npm run spec -- --inspect",
+    "spec": "cross-env-shell NODE_ENV=test  \"mocha --recursive --timeout 25000\"",
+    "start": "node .",
+    "db:migrate": "sequelize db:migrate",
+    "db:unmigrate": "sequelize db:migrate:undo",
+    "lint": "eslint {src,test}/**/*.js *.js",
+    "docs:generate": "apidoc -i ./src/infra/http/routes -o ./apidoc",
+    "queue:process": "node src/workers/queue-processor.js",
+    "queue:process:watch": "nodemon src/workers/queue-processor.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sandeeplpu/nodejs-boilerplate.git"
+  },
+  "keywords": [
+    "node",
+    "boiler-plate"
+  ],
+  "author": "Sandeep Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sandeeplpu/nodejs-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Sandeeplpu/nodejs-boilerplate#readme",
+  "engines": {
+    "node": "10.x"
+  },
+  "dependencies": {
+    "acl": "^0.4.11",
+    "acl-mem-regexp": "^0.2.0",
+    "apidoc": "^0.20.0",
+    "aws-sdk": "^2.609.0",
+    "body-parser": "^1.19.0",
+    "bull": "^3.13.0",
+    "bull-arena": "^2.7.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-body-parser-json-error": "^0.1.0",
+    "express-brute": "^1.0.1",
+    "express-brute-store-sequelize": "^2.0.4",
+    "express-http-auth": "^0.1.0",
+    "express-validator": "^6.3.1",
+    "newrelic": "^6.2.0",
+    "pg": "^7.17.0",
+    "rollbar": "^2.14.4",
+    "sequelize": "^5.21.3",
+    "sequelize-cli": "^5.5.1",
+    "sequelize-log-syntax-colors": "^2.0.0",
+    "sql-formatter": "^2.3.3",
+    "validator": "^13.0.0",
+    "yn": "^4.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-no-only-tests": "^2.4.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "faker": "^4.1.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "mocha": "^7.1.2",
+    "prettier": "^1.19.1",
+    "sequelize-fixtures": "^1.1.1"
+  }
+}
